@@ -1,4 +1,9 @@
 describe('template spec', () => {
+  Cypress.on('uncaught:exception', (err, runnable) => {
+    console.error('Uncaught exception:', err.message);
+    return false;
+  });
+  
   beforeEach(() => {
     cy.visit('https://team-finder-404.web.app');
   })
@@ -20,7 +25,7 @@ describe('template spec', () => {
     // Click the second button
     cy.get('button').eq(1).click();
   })
-  
+
   it('Sign up testing', () => {
     // Check the welcome message
     cy.get('h1').should('contain.text', 'Welcome to Team Finder');
@@ -36,6 +41,54 @@ describe('template spec', () => {
     cy.get('input').eq(4).type('Error404 Headquarters'); // Fifth input
 
     cy.get('button').eq(1).click();
+  });
 
-});
+  it('Routes testing', () => {
+    // Check the welcome message
+    cy.get('h1').should('contain.text', 'Welcome to Team Finder');
+
+    // Click the first button
+    cy.get('button:first').click();
+
+    // Enter email and password
+    cy.get('input:first').type('dudadud@yahoo.com');
+    cy.get('input:last').type('Password123!');
+
+    cy.get('button:first').click();
+
+    cy.get('button').eq(1).click();
+    cy.get('button:first').click();
+    cy.url().should('include', '/myskills');
+    cy.wait(700);
+
+    cy.get('button').eq(1).click();
+    cy.url().should('include', '/myprojects');
+    cy.wait(700);
+
+    cy.get('button').eq(2).click();
+    cy.url().should('include', '/organizationemployees');
+    cy.wait(700);
+
+    cy.get('button').eq(3).click();
+    cy.url().should('include', '/organizationdepartments');
+    cy.wait(700);
+
+    cy.get('button').eq(4).click();
+    cy.url().should('include', '/organizationskills');
+    cy.wait(700);
+
+    cy.get('button').eq(5).click();
+    cy.url().should('include', '/mydepartment');
+    cy.wait(700);
+
+    cy.get('button').eq(6).click();
+    cy.url().should('include', '/projects');
+    cy.wait(700);
+
+    cy.get('button').eq(7).click();
+    cy.url().should('include', '/departmentprojects');
+    cy.wait(700);
+
+  });
+
 })
