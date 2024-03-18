@@ -3,7 +3,7 @@ describe('template spec', () => {
     console.error('Uncaught exception:', err.message);
     return false;
   });
-  
+
   beforeEach(() => {
     cy.visit('https://team-finder-404.web.app');
     cy.viewport(1920, 1080)
@@ -124,11 +124,11 @@ describe('template spec', () => {
     cy.get('button').eq(1).click();
 
     cy.get('button').eq(9).click();
-    
+
     cy.get('input').eq(0).type('Minecraft'); // First input
     cy.contains('Minecraft').click();
 
-    cy.get('button').eq(1).click({force:true}); 
+    cy.get('button').eq(1).click({ force: true });
     // cy.get('Minecraft').click(); // First input
   });
 
@@ -143,7 +143,7 @@ describe('template spec', () => {
     cy.get('input:first').type('dudadud@yahoo.com');
     cy.get('input:last').type('Password123!');
 
-    cy.get('button').eq(1).click();   
+    cy.get('button').eq(1).click();
     cy.get('button').eq(1).click();
 
     cy.get('button').eq(10).click();
@@ -168,9 +168,124 @@ describe('template spec', () => {
 
     cy.get('button').eq(10).click();
     cy.get('body').click();
-    
-    // Click the button once with multiple:true option
-    // cy.get('.flex-wrap.justify-center > :nth-child(1)').click({multiple:true}, cy.get('.mantine-Modal-overlay').click());
-});
 
+    // Click the button once with multiple:true option
+    cy.get('.flex-wrap.justify-center > :nth-child(1)').click({ multiple: true }, cy.get('button').eq(2).click({ multiple: true }));
+
+  });
+  it('Org Departments Testing', () => {
+    // Check the welcome message
+    cy.get('h1').should('contain.text', 'Welcome to Team Finder');
+
+    // Click the first button
+    cy.get('button:first').click();
+
+    // Enter email and password
+    cy.get('input:first').type('dudadud@yahoo.com');
+    cy.get('input:last').type('Password123!');
+    cy.get('button').eq(1).click();
+
+    cy.get('button').eq(2).click();
+
+    cy.get('button').eq(10).click();
+    cy.get('body').click();
+
+    // Click the button once with multiple:true option
+    cy.get('.flex-wrap.justify-center > :nth-child(1)').click({ multiple: true }, cy.get('button').eq(2).click({ multiple: true }));
+
+  });
+  it('Org Skills Testing', () => {
+    // Check the welcome message
+    cy.get('h1').should('contain.text', 'Welcome to Team Finder');
+
+    // Click the first button
+    cy.get('button:first').click();
+
+    // Enter email and password
+    cy.get('input:first').type('dudadud@yahoo.com');
+    cy.get('input:last').type('Password123!');
+    cy.get('button').eq(1).click();
+
+    cy.get('button').eq(3).click();
+
+    cy.get('button').eq(10).click();
+    cy.get('body').click();
+
+    // Click the button once with multiple:true option
+    cy.get('.flex-wrap.justify-center > :nth-child(1)').click({ multiple: true }, cy.get('button').eq(3).click({ multiple: true }));
+
+  });
+  it('My Department Testing', () => {
+    // Check the welcome message
+    cy.get('h1').should('contain.text', 'Welcome to Team Finder');
+
+    // Click the first button
+    cy.get('button:first').click();
+
+    // Enter email and password
+    cy.get('input:first').type('dudadud@yahoo.com');
+    cy.get('input:last').type('Password123!');
+    cy.get('button').eq(1).click();
+
+    cy.get('button').eq(5).click();
+
+    cy.get('.flex-wrap.justify-center > :nth-child(1)').click({force:true}, cy.get('button').eq(5).click({force:true}));
+    cy.get('.m-b5489c3c > .mantine-focus-auto').click();
+    cy.get('button').eq(11).click();
+  });
+  it('Managed Projects Testing', () => {
+    // Check the welcome message
+    cy.get('h1').should('contain.text', 'Welcome to Team Finder');
+
+    // Click the first button
+    cy.get('button:first').click();
+
+    // Enter email and password
+    cy.get('input:first').type('dudadud@yahoo.com');
+    cy.get('input:last').type('Password123!');
+    cy.get('button').eq(1).click();
+
+    cy.get('button').eq(6).click();
+
+    cy.get('button').eq(10).click();
+    cy.get('body').click();
+
+    // Click the button once with multiple:true option
+    cy.get('.flex-wrap.justify-center > :nth-child(1)').click({ multiple: true }, cy.get('button').eq(6).click({ multiple: true }));
+
+  });
+  it('Dept Projects Testing', () => {
+    // Check the welcome message
+    cy.get('h1').should('contain.text', 'Welcome to Team Finder');
+
+    // Click the first button
+    cy.get('button:first').click();
+
+    // Enter email and password
+    cy.get('input:first').type('dudadud@yahoo.com');
+    cy.get('input:last').type('Password123!');
+    cy.get('button').eq(1).click();
+
+    cy.get('button').eq(7).click();
+
+    // cy.get('button').eq(10).click();
+    cy.get('body').click();
+
+    // Click the button once with multiple:true option
+    cy.get('.flex-wrap.justify-center > :nth-child(1)').click({ multiple: true }, cy.get('button').eq(7).click({ multiple: true }));
+  });
+  it('Log Out Testing Testing', () => {
+    // Check the welcome message
+    cy.get('h1').should('contain.text', 'Welcome to Team Finder');
+
+    // Click the first button
+    cy.get('button:first').click();
+
+    // Enter email and password
+    cy.get('input:first').type('dudadud@yahoo.com');
+    cy.get('input:last').type('Password123!');
+    cy.get('button').eq(1).click();
+
+    cy.get('span').eq(11).click();
+  });
 })
