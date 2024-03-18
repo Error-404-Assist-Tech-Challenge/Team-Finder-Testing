@@ -132,4 +132,45 @@ describe('template spec', () => {
     // cy.get('Minecraft').click(); // First input
   });
 
+  it('My Projects Testing', () => {
+    // Check the welcome message
+    cy.get('h1').should('contain.text', 'Welcome to Team Finder');
+
+    // Click the first button
+    cy.get('button:first').click();
+
+    // Enter email and password
+    cy.get('input:first').type('dudadud@yahoo.com');
+    cy.get('input:last').type('Password123!');
+
+    cy.get('button').eq(1).click();   
+    cy.get('button').eq(1).click();
+
+    cy.get('button').eq(10).click();
+    cy.get('button').eq(9).click();
+    cy.get('button').eq(10).click();
+    cy.get('div').eq(11).click();
+
+  });
+  it('Org Employees Testing', () => {
+    // Check the welcome message
+    cy.get('h1').should('contain.text', 'Welcome to Team Finder');
+
+    // Click the first button
+    cy.get('button:first').click();
+
+    // Enter email and password
+    cy.get('input:first').type('dudadud@yahoo.com');
+    cy.get('input:last').type('Password123!');
+    cy.get('button').eq(1).click();
+
+    cy.get('button').eq(2).click();
+
+    cy.get('button').eq(10).click();
+    cy.get('body').click();
+    
+    // Click the button once with multiple:true option
+    // cy.get('.flex-wrap.justify-center > :nth-child(1)').click({multiple:true}, cy.get('.mantine-Modal-overlay').click());
+});
+
 })
