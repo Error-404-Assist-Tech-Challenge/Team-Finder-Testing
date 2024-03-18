@@ -6,6 +6,7 @@ describe('template spec', () => {
   
   beforeEach(() => {
     cy.visit('https://team-finder-404.web.app');
+    cy.viewport(1920, 1080)
   })
 
   it('Log in testing', () => {
@@ -89,6 +90,46 @@ describe('template spec', () => {
     cy.url().should('include', '/departmentprojects');
     cy.wait(700);
 
+  });
+
+  it('Notifications Testing', () => {
+    // Check the welcome message
+    cy.get('h1').should('contain.text', 'Welcome to Team Finder');
+
+    // Click the first button
+    cy.get('button:first').click();
+
+    // Enter email and password
+    cy.get('input:first').type('dudadud@yahoo.com');
+    cy.get('input:last').type('Password123!');
+
+    cy.get('button:first').click();
+    cy.get('button').eq(1).click();
+
+    cy.get('button').eq(8).click();
+
+  });
+  it('Add Skill Testing', () => {
+    // Check the welcome message
+    cy.get('h1').should('contain.text', 'Welcome to Team Finder');
+
+    // Click the first button
+    cy.get('button:first').click();
+
+    // Enter email and password
+    cy.get('input:first').type('dudadud@yahoo.com');
+    cy.get('input:last').type('Password123!');
+
+    cy.get('button:first').click();
+    cy.get('button').eq(1).click();
+
+    cy.get('button').eq(9).click();
+    
+    cy.get('input').eq(0).type('Minecraft'); // First input
+    cy.contains('Minecraft').click();
+
+    cy.get('button').eq(1).click({force:true}); 
+    // cy.get('Minecraft').click(); // First input
   });
 
 })
